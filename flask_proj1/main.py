@@ -4,6 +4,7 @@ from db import db
 from flask_jwt_extended import JWTManager
 
 from resources.user import UserRegister, UserLogin
+from resources.post import Post
 
 app = Flask(__name__)
 api = Api(app)
@@ -22,6 +23,7 @@ def create_tables():
 
 api.add_resource(UserRegister, "/signup")
 api.add_resource(UserLogin, "/login")
+api.add_resource(Post, '/post/<int:user_id>')
 
 if __name__ == "__main__":
     db.init_app(app)
